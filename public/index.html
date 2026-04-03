@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Vibe Journal</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f0f13;
+      color: #e8e8f0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: #1a1a24;
+      border: 1px solid #2e2e42;
+      border-radius: 16px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #c4b5fd;
+    }
+
+    textarea#userInput {
+      width: 100%;
+      min-height: 140px;
+      background: #12121a;
+      border: 1px solid #2e2e42;
+      border-radius: 10px;
+      color: #e8e8f0;
+      font-size: 1rem;
+      padding: 0.85rem 1rem;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    textarea#userInput:focus { border-color: #7c3aed; }
+    textarea#userInput::placeholder { color: #555570; }
+
+    select#vibe {
+      width: 100%;
+      background: #12121a;
+      border: 1px solid #2e2e42;
+      border-radius: 10px;
+      color: #e8e8f0;
+      font-size: 0.95rem;
+      padding: 0.75rem 1rem;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+    }
+    select#vibe:focus { border-color: #7c3aed; }
+
+    button#submitBtn {
+      background: #7c3aed;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    button#submitBtn:hover { background: #6d28d9; }
+    button#submitBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    #aiResponse {
+      background: #12121a;
+      border: 1px solid #2e2e42;
+      border-radius: 10px;
+      padding: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #c4c4d8;
+      min-height: 60px;
+      white-space: pre-wrap;
+      display: none;
+    }
+    #aiResponse.visible { display: block; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>AI Vibe Journal</h1>
+    <form id="journalForm">
+      <textarea id="userInput" placeholder="How are you feeling?"></textarea>
+      <select id="vibe">
+        <option value="therapist">Therapist</option>
+        <option value="coach">Coach</option>
+        <option value="brutal">Brutally Honest Friend</option>
+      </select>
+      <button id="submitBtn" type="submit">Send</button>
+    </form>
+    <div id="aiResponse"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
